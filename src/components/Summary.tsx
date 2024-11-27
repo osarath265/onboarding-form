@@ -15,7 +15,7 @@ export const Summary = () => {
             {
                 Object.entries(state.expertise).map((expertise: any, value : any ) => {
                     return (
-                        value && <div>{expertise}</div>
+                        value ? <div>{expertise}</div> : null
                     )
                 })
             }

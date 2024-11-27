@@ -12,8 +12,8 @@ export const FormCheckInput = ({name, placeholder, categories} : any) => {
 
     const handleSelection = (e : any) => {
         console.log("setting state", state);
-        setInput({...input, [e.target.name] : true});
-        updateState({...state, [name] : {...input, [e.target.name] : true}});
+        setInput((prev : any) => ({...prev, [e.target.name] : !input[e.target.name]}));
+        updateState({...state, [name] : {...input, [e.target.name] : !input[e.target.name]}});
     }
 
     return (
@@ -22,7 +22,7 @@ export const FormCheckInput = ({name, placeholder, categories} : any) => {
             categories.map((category : any) => {
                 return (
                     <div key={category}>
-                        <input type="checkbox" id={category} name={category} checked = {input[category]} onChange={handleSelection}/>
+                        <input type="checkbox" id={category} name={category} checked = {input[category]} onChange={handleSelection} value={input[category]}/>
                         <label htmlFor={category}>{category}</label>
                     </div>
                 )
